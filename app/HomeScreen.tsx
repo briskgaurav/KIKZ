@@ -71,6 +71,14 @@ const HomeScreen = () => {
           )}
         </TouchableOpacity>
       </View>
+      <View className='flex flex-row gap-2 justify-between px-4'>
+        <TouchableOpacity>
+          <Text>Login</Text>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Text>Signup</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
