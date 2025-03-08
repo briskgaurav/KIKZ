@@ -6,9 +6,13 @@ import Header from 'components/Header';
 import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
+
+
 type RootStackParamList = {
   HomeScreen: undefined;
   ItemScreen: undefined;
+  LoginScreen : undefined;
+  SignupScreen : undefined;
 };
 
 const HomeScreen = () => {
@@ -72,10 +76,12 @@ const HomeScreen = () => {
         </TouchableOpacity>
       </View>
       <View className='flex flex-row gap-2 justify-between px-4'>
-        <TouchableOpacity>
+        <TouchableOpacity
+        onPress={() => { navigation.navigate('LoginScreen') }} >
           <Text>Login</Text>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity
+        onPress={() => navigation.navigate('SignupScreen')} >
           <Text>Signup</Text>
         </TouchableOpacity>
       </View>
