@@ -9,6 +9,7 @@ import { StatusBar } from 'expo-status-bar';
 import ItemScreen from 'app/ItemScreen';
 import LoginScreen from 'app/LoginScreen';
 import SignupScreen from 'app/SignupScreen';
+import MainScreen from 'app/MainScreen';
 const Stack = createStackNavigator();
 
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
         <Stack.Screen name="SignupScreen" component={SignupScreen} />
         <Stack.Screen name="HomeScreen" component={HomeScreen} />
         <Stack.Screen name="ItemScreen" component={ItemScreen} />
+        <Stack.Screen name="MainScreen" component={MainScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -1,11 +1,13 @@
-import { View, Text,TouchableOpacity } from "react-native";
+import { View, Text,TouchableOpacity, Alert } from "react-native";
 import React, { useState } from "react";
-import { useNavigation } from "expo-router";
-import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { TextInput } from "react-native-gesture-handler";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import {auth} from '../firebase'
+import { useNavigation } from '@react-navigation/native';
+import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 type RootStackParamList = {
-    HomeScreen:undefined;
+    MainScreen:undefined;
 }
 
 export default function LoginScreen() {
@@ -13,8 +15,24 @@ export default function LoginScreen() {
     const [email,setEmail] = useState('')
     const [password,setPassword] = useState('')
 
-    const handleLogin = () => {
+    const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
+    const handleLogin = () => {
+      signInWithEmailAndPassword(auth,email,password).then(
+        (userCredential) => {
+          const user = userCredential.user
+          console.log(user)
+          if(user){
+            Alert.alert('Success','User LogIn Successfully')
+            navigation.navigate('MainScreen')
+          }
+        }
+      ).catch((error) => {
+        const errorCode = error.code
+        const errorMessage = error.message 
+        console.log("Error Code During Logged in",errorCode)
+        console.log("Error Message during loggedin",errorMessage)
+      })
     }
 
   return (
