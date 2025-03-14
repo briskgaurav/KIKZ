@@ -38,7 +38,7 @@ const HomeScreen = () => {
       <View
         style={{ backgroundColor: colors.white }}
         className=" relative h-[85%] overflow-hidden rounded-b-[30px]">
-        <SafeAreaView className="absolute top-0 z-30 w-full">
+        <SafeAreaView className="absolute top-12 z-30 w-full">
           <Header />
         </SafeAreaView>
         <TouchableOpacity activeOpacity={0.8} onPress={() => navigation.navigate('ItemScreen')}>

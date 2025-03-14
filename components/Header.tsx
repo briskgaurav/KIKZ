@@ -13,8 +13,7 @@ const Header = () => {
   }
 
   return (
-    <SafeAreaView>
-      <View className="bg-transparent flex-row  items-center justify-between px-10">
+      <SafeAreaView className="bg-transparent flex-row  items-center justify-between px-10">
         <View className="w-[55%]">
           <View className={`flex-row ${ShowInput ? 'border' : ''} rounded-full border-[#796857]  p-2 px-3`}>
             {ShowInput ? (
@@ -31,9 +30,8 @@ const Header = () => {
         <TouchableOpacity onPress={toggleModal}>
           <ShoppingBagIcon size={25} color={colors.primary} />
         </TouchableOpacity>
-      </View>
-      {/* {visible && <CartModal toggleModal={toggleModal} cartItems={[]} /> } */}
-    </SafeAreaView>
+      </SafeAreaView>
+    
   );
 };
 
