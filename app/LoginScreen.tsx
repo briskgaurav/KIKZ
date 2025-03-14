@@ -6,6 +6,7 @@ import { auth } from '../firebase';
 import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { colors } from 'Utils/Colors';
+import Toast from 'react-native-toast-message';
 
 type RootStackParamList = {
   SignupScreen: undefined;
@@ -21,16 +22,58 @@ export default function LoginScreen() {
 
   const handleLogin = () => {
     if (!isAdmin) {
+      if(!email){
+        Toast.show({
+          type:"error",
+          text1:"Invalid Credentials",
+          text2:"Please Enter Email"
+        })
+      }
+
+      if(!password){
+        Toast.show({
+          type:"error",
+          text1:"Invalid Credentials",
+          text2:"Please Enter Password"
+        })
+      }
+      
       signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
           const user = userCredential.user;
           console.log(user);
           if (user) {
             navigation.replace('HomeScreen');
+            Toast.show({
+              type:"success",
+              text1:"Login Successfull",
+              text2:`Welcome back ${email}`
+            })
           }
         })
         .catch((error) => {
-          console.log('Error Message during loggedin', error.message);
+          if(error.code === 'auth/invalid-email'){
+            Toast.show({
+              type:"error",
+              text1:"User Not Registered",
+              text2:"Please Sign up first",
+            })
+            // return ;
+          }
+          else if(error.code === 'auth/wrong-password'){
+            Toast.show({
+              type:"error",
+              text1:"Invalid Password",
+              text2:"Please Try again."
+            })
+          }
+          else{
+            Toast.show({
+              type:"error",
+              text1:'Login Failed',
+              text2:error.message
+            })
+          }
         });
     }
     if(isAdmin){

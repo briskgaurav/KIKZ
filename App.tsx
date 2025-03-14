@@ -10,6 +10,8 @@ import ItemScreen from 'app/ItemScreen';
 import LoginScreen from 'app/LoginScreen';
 import SignupScreen from 'app/SignupScreen';
 import MainScreen from 'app/MainScreen';
+import Toast from 'react-native-toast-message';
+
 const Stack = createStackNavigator();
 
 const App = () => {
@@ -24,6 +26,7 @@ const App = () => {
         <Stack.Screen name="ItemScreen" component={ItemScreen} />
         <Stack.Screen name="MainScreen" component={MainScreen} />
       </Stack.Navigator>
+      <Toast />
     </NavigationContainer>
   );
 };

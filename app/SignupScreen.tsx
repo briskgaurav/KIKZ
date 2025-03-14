@@ -7,6 +7,8 @@ import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { colors } from 'Utils/Colors';
 import { ArrowLeftCircleIcon, BackwardIcon, ChevronLeftIcon, HeartIcon } from 'react-native-heroicons/outline';
+import Toast from 'react-native-toast-message';
+
 
 type RootStackParamList = {
   LoginScreen: undefined;
@@ -20,9 +22,29 @@ export default function SignupScreen() {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
   const handleSignup = async () => {
-    if (!name || !email || !password) {
-      Alert.alert('Error', 'Please Fill all fields');
-      return;
+    
+    if(!name){
+      Toast.show({
+        type:"error",
+        text1:"Invalid Credentials",
+        text2:"Please Enter Name"
+      })
+    }
+
+    if(!email){
+      Toast.show({
+        type:"error",
+        text1:"Invalid Credentials",
+        text2:"Please Enter Email",
+      })
+    }
+
+    if(!password){
+      Toast.show({
+        type:"error",
+        text1:"Invalid Credentials",
+        text2:"Please Enter Password",
+      })
     }
 
     createUserWithEmailAndPassword(auth, email, password)
@@ -37,10 +59,24 @@ export default function SignupScreen() {
 
         // console.log("DETAILS::::::::::::",user.displayName)
         navigation.navigate('LoginScreen');
+
+        Toast.show({
+          type:"success",
+          text1:"Successfully",
+          text2:"User Register Successfully"
+        })
       })
       .catch((error) => {
+        console.log("error is:",error)
         const errorCode = error.code;
         const errorMessage = error.message;
+        if(errorCode === 'auth/email-already-in-use'){
+          Toast.show({
+            type:"error",
+            text1:"Error",
+            text2:"Email is already registered"
+          })
+        }
         console.log('Error code', errorCode);
         console.log('Error Message', errorMessage);
       });
