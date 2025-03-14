@@ -6,7 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 type RootStackParamList = {
-  HomeScreen: undefined;
+  LoginScreen: undefined;
 };
 
 const SplashScreen = () => {
@@ -15,7 +15,7 @@ const SplashScreen = () => {
     setTimeout(() => {
       navigation.reset({
         index: 0,
-        routes: [{ name: 'HomeScreen' }],
+        routes: [{ name: 'LoginScreen' }],
       })
     }, 2000);
   }, [navigation]);

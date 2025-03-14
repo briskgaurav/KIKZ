@@ -75,7 +75,7 @@ const HomeScreen = () => {
           )}
         </TouchableOpacity>
       </View>
-      <View className='flex flex-row gap-2 justify-between px-4'>
+      {/* <View className='flex flex-row gap-2 justify-between px-4'>
         <TouchableOpacity
         onPress={() => { navigation.navigate('LoginScreen') }} >
           <Text>Login</Text>
@@ -84,7 +84,7 @@ const HomeScreen = () => {
         onPress={() => navigation.navigate('SignupScreen')} >
           <Text>Signup</Text>
         </TouchableOpacity>
-      </View>
+      </View> */}
     </View>
   );
 };

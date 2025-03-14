@@ -32,7 +32,7 @@ const Header = () => {
           <ShoppingBagIcon size={25} color={colors.primary} />
         </TouchableOpacity>
       </View>
-      {visible && <CartModal toggleModal={toggleModal} cartItems={[]} /> }
+      {/* {visible && <CartModal toggleModal={toggleModal} cartItems={[]} /> } */}
     </SafeAreaView>
   );
 };

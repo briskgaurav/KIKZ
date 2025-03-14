@@ -4,7 +4,11 @@ module.exports = {
 
   presets: [require('nativewind/preset')],
   theme: {
-    extend: {},
+    extend: {
+      clipPath: {
+        'cut-corner': 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 80%)',
+      },
+    },
   },
   plugins: [],
 };
