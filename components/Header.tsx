@@ -2,9 +2,15 @@ import { View, Text, SafeAreaView, TouchableOpacity, TextInput, Touchable } from
 import React, { useState } from 'react';
 import { MagnifyingGlassIcon, ShoppingBagIcon } from 'react-native-heroicons/outline';
 import { colors } from 'Utils/Colors';
+import CartModal from 'app/CartModal';
 
 const Header = () => {
   const [ShowInput, setShowInput] = useState(false);
+  const [visible, setVisible] = useState<boolean>(false);
+
+  const toggleModal = ()=>{
+    setVisible(prev=>!prev)
+  }
 
   return (
     <SafeAreaView>
@@ -18,14 +24,15 @@ const Header = () => {
             )}
             <TouchableOpacity onPress={() => setShowInput((prev) => !prev)}>
 
-            <MagnifyingGlassIcon   size={25} color={colors.primary} />
+            <MagnifyingGlassIcon size={25} color={colors.primary} />
             </TouchableOpacity>
           </View>
         </View>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={toggleModal}>
           <ShoppingBagIcon size={25} color={colors.primary} />
         </TouchableOpacity>
       </View>
+      {visible && <CartModal toggleModal={toggleModal} cartItems={[]} /> }
     </SafeAreaView>
   );
 };
