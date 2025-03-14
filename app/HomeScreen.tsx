@@ -1,4 +1,4 @@
-import { View, Text, Image, TouchableOpacity } from 'react-native';
+import { View, Text, Image, TouchableOpacity, SafeAreaView } from 'react-native';
 import React, { useState } from 'react';
 import { colors } from 'Utils/Colors';
 import { StatusBar } from 'expo-status-bar';
@@ -35,13 +35,12 @@ const HomeScreen = () => {
   return (
     <View style={{ backgroundColor: colors.primary }} className="flex-1">
       <StatusBar style="dark" />
-
       <View
         style={{ backgroundColor: colors.white }}
         className=" relative h-[85%] overflow-hidden rounded-b-[30px]">
-        <View className="absolute top-0 z-30 w-full">
+        <SafeAreaView className="absolute top-0 z-30 w-full">
           <Header />
-        </View>
+        </SafeAreaView>
         <TouchableOpacity activeOpacity={0.8} onPress={() => navigation.navigate('ItemScreen')}>
           <Image className="h-full w-full bg-cover" source={getCategoryImage()} />
         </TouchableOpacity>
